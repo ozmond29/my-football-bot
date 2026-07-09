@@ -2,7 +2,7 @@ name: Run Football Prediction Bot Daily
 
 on:
   schedule:
-    # Runs automatically at 6:00 AM UTC (7:00 AM Nigerian Time)
+    # ⏱️ Triggers at 06:00 UTC every single day (7:00 AM Nigerian Time)
     - cron: '0 6 * * *'
   workflow_dispatch: # Keeps your manual "Run Now" testing button active
 
@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Upgraded to version 4 to support Node 24
+        uses: actions/checkout@v4
 
       - name: Set Up Python Environment
-        uses: actions/setup-python@v5 # Upgraded to version 5 to clear warnings
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10' # Fixed the typo from python-node
+          python-version: '3.10'
 
       - name: Install Network Plugins
         run: pip install requests urllib3
