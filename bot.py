@@ -132,8 +132,8 @@ def run_predictions():
         print("ℹ️ Off-season detected (0 live top tier matches). Injecting live server test line...")
         fixtures = [{
             "league": "UEFA Champions League (Live Test)",
-            "home": "Real Madrid",
-            "away": "Manchester City",
+            "home": "Arsenal FC (Live Test)",
+            "away": "Chelsea FC",
             "h_att": 2.45, "h_def": 1.10, "a_att": 2.10, "a_def": 1.40  
         }]
 
