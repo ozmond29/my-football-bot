@@ -125,11 +125,19 @@ def get_live_fixtures():
 
 def run_predictions():
     fixtures = get_live_fixtures()
+    
+    # 🔄 OFF-SEASON AUTO-TEST DETECTOR:
+    # If the live world leagues are empty today, the bot injects a live test game!
     if not fixtures:
-        print("🏁 Scan finished. No active top-tier games scheduled today.")
-        return
+        print("ℹ️ Off-season detected (0 live top tier matches). Injecting live server test line...")
+        fixtures = [{
+            "league": "UEFA Champions League (Live Test)",
+            "home": "Real Madrid",
+            "away": "Manchester City",
+            "h_att": 2.45, "h_def": 1.10, "a_att": 2.10, "a_def": 1.40  
+        }]
 
-    print("🤖 Processing parameters...")
+    print("🤖 Processing dual-market probability parameters...")
     alerts_triggered = 0
 
     for item in fixtures:
@@ -146,7 +154,3 @@ def run_predictions():
             time.sleep(1)
             
     print(f"🏁 Execution finished. Dispatched {alerts_triggered} value lines.")
-
-if __name__ == "__main__":
-    run_predictions()
-  
