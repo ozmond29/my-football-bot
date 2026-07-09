@@ -41,7 +41,7 @@ def parse_h2h_goals(score_str):
 
 def send_accumulator_report(fixtures_list, target_date):
     """Dispatches the finalized high-volume accumulator list to Telegram."""
-    url = "https://telegram.org"
+    url = "https://api.telegram.org/bot8822256842:AAEYdTp5BH4wQ3czEYsP1XCDGNX3e0_fw_Y/sendMessage"
     
     message = f"📊 **STRATEGY ACCUMULATOR SHEET (OVER 1.5)** 📊\n🗓️ **Date:** {target_date}\n"
     message += f"🎯 **Qualified Picks:** {len(fixtures_list)} Matches\n"
