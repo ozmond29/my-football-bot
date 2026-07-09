@@ -100,7 +100,7 @@ def get_live_fixtures():
     
     for code in free_competition_codes:
         # 🟢 FIXED URL STRUCTURAL PATH LAYOUT BELOW:
-        url = f"https://football-data.org{code}/matches"
+        url = f"https://api.football-data.org/v4/competitions/matches"
         try:
             response = requests.get(url, headers=headers, timeout=10, verify=False)
             if response.status_code != 200:
