@@ -61,7 +61,7 @@ def calculate_kelly_stake(model_prob, bookie_odds):
     return round(max(0.0, (raw_kelly / 4.0) * 100), 2)
 
 def send_telegram_alert(home_team, away_team, league_name, metrics):
-    url = "https://telegram.org"
+    url = "https://api.telegram.org/bot8822256842:AAEYdTp5BH4wQ3czEYsP1XCDGNX3e0_fw_Y/sendMessage"
     assumed_over_odds = 1.45
     assumed_btts_odds = 1.65
     
