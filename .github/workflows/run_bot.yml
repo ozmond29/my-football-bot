@@ -1,0 +1,26 @@
+name: Run Football Prediction Bot Daily
+
+on:
+  schedule:
+    # This tells GitHub to run your bot automatically every single morning at 6:00 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # This adds a manual "Run Now" button for testing
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-node: '3.10'
+
+      - name: Install Network Plugins
+        run: pip install requests urllib3
+
+      - name: Execute Model Mathematics
+        run: python bot.py
+        
