@@ -29,7 +29,7 @@ def calculate_advanced_markets(home_attack, home_defense, away_attack, away_defe
     p_home = [poisson_probability(i, lambda_home) for i in range(3)]
     p_away = [poisson_probability(i, mu_away) for i in range(3)]
     
-        # 🟢 CORRECT INDEXED MATRIX MULTIPLICATION:
+    # 🟢 CORRECT INDEXED MATRIX MULTIPLICATION:
     p_0_0 = (p_home[0] * p_away[0]) * (1 - (lambda_home * mu_away * DIXON_COLES_RHO))
     p_1_0 = (p_home[1] * p_away[0]) * (1 + (mu_away * DIXON_COLES_RHO))
     p_0_1 = (p_home[0] * p_away[1]) * (1 + (lambda_home * DIXON_COLES_RHO))
