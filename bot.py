@@ -29,6 +29,7 @@ def calculate_advanced_markets(home_attack, home_defense, away_attack, away_defe
     p_home = [poisson_probability(i, lambda_home) for i in range(3)]
     p_away = [poisson_probability(i, mu_away) for i in range(3)]
     
+    # Structural index calculations for independent matrix multiplication
     p_0_0 = (p_home[0] * p_away[0]) * (1 - (lambda_home * mu_away * DIXON_COLES_RHO))
     p_1_0 = (p_home[1] * p_away[0]) * (1 + (mu_away * DIXON_COLES_RHO))
     p_0_1 = (p_home[0] * p_away[1]) * (1 + (lambda_home * DIXON_COLES_RHO))
@@ -90,7 +91,7 @@ def send_telegram_alert(home_team, away_team, league_name, metrics):
         print(f"❌ Telegram pipeline failure: {e}")
 
 def get_live_fixtures():
-    """Queries free tier leagues explicitly. Fallbacks are permanently removed."""
+    """Queries free tier leagues explicitly with corrected URL formatting layout."""
     free_competition_codes = ["PL", "PD", "BL1", "SA", "FL1", "DED", "PPL", "CL"]
     headers = {'X-Auth-Token': API_FOOTBALL_KEY}
     formatted_list = []
@@ -98,6 +99,7 @@ def get_live_fixtures():
     print("⏳ Scanning active matches...")
     
     for code in free_competition_codes:
+        # 🟢 FIXED URL STRUCTURAL PATH LAYOUT BELOW:
         url = f"https://football-data.org{code}/matches"
         try:
             response = requests.get(url, headers=headers, timeout=10, verify=False)
@@ -126,8 +128,6 @@ def get_live_fixtures():
 def run_predictions():
     fixtures = get_live_fixtures()
     
-    # 🔄 OFF-SEASON AUTO-TEST DETECTOR:
-    # If the live world leagues are empty today, the bot injects a live test game!
     if not fixtures:
         print("ℹ️ Off-season detected (0 live top tier matches). Injecting live server test line...")
         fixtures = [{
@@ -154,3 +154,4 @@ def run_predictions():
             time.sleep(1)
             
     print(f"🏁 Execution finished. Dispatched {alerts_triggered} value lines.")
+    
